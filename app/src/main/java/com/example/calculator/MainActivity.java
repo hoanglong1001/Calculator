@@ -161,10 +161,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txtKetqua.setText("");
                 break;
             case R.id.buttondaodau:
-//                BaseInputConnection inputConnection = new BaseInputConnection(txtHienthi, true);
-//                inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
-//                String newNumber = deleteNumber(txtHienthi.getText().toString());
-//                txtHienthi.setText(newNumber);
                 String currentString = txtHienthi.getText().toString();
                 if (currentString != "") {
                     Float opposite = Float.parseFloat(currentString);
