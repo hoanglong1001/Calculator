@@ -1,0 +1,12 @@
+[1mdiff --git a/.idea/vcs.xml b/.idea/vcs.xml[m
+[1mindex 94a25f7..283b3a1 100644[m
+[1m--- a/.idea/vcs.xml[m
+[1m+++ b/.idea/vcs.xml[m
+[36m@@ -2,5 +2,6 @@[m
+ <project version="4">[m
+   <component name="VcsDirectoryMappings">[m
+     <mapping directory="$PROJECT_DIR$" vcs="Git" />[m
+[32m+[m[32m    <mapping directory="$PROJECT_DIR$/Calculator" vcs="Git" />[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
