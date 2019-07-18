@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnNumber0, btnNUmber1, btnNUmber2, btnNUmber3, btnNUmber4, btnNUmber5, btnNUmber6, btnNUmber7, btnNUmber8, btnNUmber9;
     private Button btnCong, btnTru, btnNhan, btnChia, btnPhantram, btnAC, btnDaodau, btnCham, btnBang;
     private TextView txtHienthi, txtKetqua;
-    private final String cong = "+", tru = "-", nhan = "*", chia = "/", bang = "=";
+    private final String cong = "+", tru = "-", nhan = "*", chia = "/", bang = "=", phantram = "%", daodau = "+/-";
     private String action;
     private float res1 = Float.NaN, res2;
 
@@ -112,35 +112,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txtHienthi.append("9");
                 break;
             case R.id.buttoncong:
-                compute();
-                action = cong;
-                txtKetqua.setText(String.valueOf(res1));
-                txtHienthi.setText(null);
+                if (txtHienthi.getText().toString() != "") {
+                    compute();
+                    action = cong;
+                    txtKetqua.setText(String.valueOf(res1));
+                    txtHienthi.setText(null);
+                }
                 break;
             case R.id.buttontru:
-                compute();
-                action = tru;
-                txtKetqua.setText(String.valueOf(res1));
-                txtHienthi.setText(null);
+                if (txtHienthi.getText().toString() != "") {
+                    compute();
+                    action = tru;
+                    txtKetqua.setText(String.valueOf(res1));
+                    txtHienthi.setText(null);
+                }
                 break;
             case R.id.buttonnhan:
-                compute();
-                action = nhan;
-                txtKetqua.setText(String.valueOf(res1));
-                txtHienthi.setText(null);
+                if (txtHienthi.getText().toString() != "") {
+                    compute();
+                    action = nhan;
+                    txtKetqua.setText(String.valueOf(res1));
+                    txtHienthi.setText(null);
+                }
                 break;
             case R.id.buttonchia:
-                compute();
-                action = chia;
-                txtKetqua.setText(String.valueOf(res1));
-                txtHienthi.setText(null);
+                if (txtHienthi.getText().toString() != "") {
+                    compute();
+                    action = chia;
+                    txtKetqua.setText(String.valueOf(res1));
+                    txtHienthi.setText(null);
+                }
                 break;
             case R.id.buttonphantram:
-
+                if (txtHienthi.getText().toString() != "") {
+                    Float percent = Float.parseFloat(txtHienthi.getText().toString());
+                    txtHienthi.setText(String.valueOf(percent/100));
+                }
                 break;
             case R.id.buttoncham:
-                btnCham.setEnabled(false);
-                txtHienthi.append(".");
+                if (!txtHienthi.getText().toString().contains(".") && txtHienthi.getText().toString() != "") {
+                    txtHienthi.append(".");
+                }
                 break;
             case R.id.buttonAC:
                 res1 = Float.NaN;
@@ -153,12 +165,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
 //                String newNumber = deleteNumber(txtHienthi.getText().toString());
 //                txtHienthi.setText(newNumber);
+                String currentString = txtHienthi.getText().toString();
+                if (currentString != "") {
+                    Float opposite = Float.parseFloat(currentString);
+                    if (opposite > 0) {
+                        txtHienthi.setText("-" + currentString);
+                    } else {
+                        txtHienthi.setText(currentString.replaceFirst("-", ""));
+                    }
+                }
                 break;
             case R.id.buttonbang:
-                compute();
-                action = bang;
-                txtKetqua.setText(String.valueOf(res1));
-                txtHienthi.setText(null);
+                if (txtHienthi.getText().toString() != "") {
+                    compute();
+                    action = bang;
+                    txtKetqua.setText(String.valueOf(res1));
+                    txtHienthi.setText(null);
+                }
                 break;
         }
     }
